@@ -1,5 +1,5 @@
 {
-  "name": "microauth-google",
+  "name": "@attractor/microauth-google",
   "version": "0.0.1",
   "description": "Google oauth for micro",
   "main": "index.js",
