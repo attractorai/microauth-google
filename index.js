@@ -1,14 +1,17 @@
 'use strict'
 
-const querystring = require('querystring')
-const url = require('url')
-const google = require('googleapis')
-const uuid = require('uuid')
-const redirect = require('micro-redirect')
-
 const provider = 'google';
-const {OAuth2} = google.auth
-const plus = google.plus('v1')
+
+const url         = require('url')
+const querystring = require('querystring')
+const uuid        = require('uuid')
+const {google}    = require('googleapis')
+const redirect    = require('micro-redirect')
+
+const plus = google.plus({
+  version: 'v1'
+})
+
 const DEFAULT_SCOPES = [
   'https://www.googleapis.com/auth/plus.me'
 ]
@@ -40,7 +43,7 @@ const microAuthGoogle = ({
   accessType = 'offline'
 }) => {
   const states = [];
-  const oauth2Client = new OAuth2(clientId, clientSecret, callbackUrl)
+  const oauth2Client = new google.auth.OAuth2(clientId, clientSecret, callbackUrl)
 
   scopes = DEFAULT_SCOPES.concat(scopes)
 
