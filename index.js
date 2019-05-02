@@ -55,8 +55,13 @@ const microAuthGoogle = ({
         const state = uuid.v4()
         states.push(state)
 
+        const urlHost = req.headers['host'];
+        const urlProtocol = urlHost.indexOf('localhost') !== -1 ? 'http' : 'https'
+        const callbackPath = url.parse(callbackUrl).pathname
+
         const redirectUrl = oauth2Client.generateAuthUrl({
           // eslint-disable-next-line camelcase
+          redirect_uri: `${urlProtocol}://${urlHost}${callbackPath}`
           access_type: accessType,
           scope: scopes,
           state
