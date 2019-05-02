@@ -61,7 +61,7 @@ const microAuthGoogle = ({
 
         const redirectUrl = oauth2Client.generateAuthUrl({
           // eslint-disable-next-line camelcase
-          redirect_uri: `${urlProtocol}://${urlHost}${callbackPath}`
+          redirect_uri: `${urlProtocol}://${urlHost}${callbackPath}`,
           access_type: accessType,
           scope: scopes,
           state
